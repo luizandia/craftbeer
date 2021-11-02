@@ -94,6 +94,7 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
 
 ## Seção reservada para que você descreva brevemente como executar o seu projeto
 
-Pode ser algo simples, como executar o arquivo Application.java. Ou talvez tenha alguma dependência como base de dados, por exemplo.
+Como estamos usando banco de dado embbeded(H2), para rodar o projeto precisamos apenas inicializar o spring boot.
+Para isso você precisa ter o jdk e o maven instalados assim como suas respectivas variáveis de ambiente configuradas.
 
-TODO
+Caso você tenha as extensões do spring na sua IDE é apenas dar player. Ou se preferir rode os seguinte comando para instalar as dependecinas usando maven e já inicializar o spring boot: ./mvnw spring-boot:run 
