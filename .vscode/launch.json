@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<craft-beer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.beerhouse.Application",
+            "projectName": "craft-beer",
+            "args": ""
+        }
+    ]
+}
