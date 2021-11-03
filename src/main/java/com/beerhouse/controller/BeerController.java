@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 import com.beerhouse.entity.Beer;
+import com.beerhouse.entity.PartialBeer;
 import com.beerhouse.service.BeerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,11 +67,10 @@ public class BeerController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Beer> partialUpdateBeer(
-        @RequestBody Beer partialBeer, 
+        @Valid @RequestBody PartialBeer partialBeer, 
         @PathVariable("id") @Positive Integer id) {
     
-        partialBeer.setId(id);
-        return ResponseEntity.ok(beerService.partialUpdate(partialBeer));
+        return ResponseEntity.ok(beerService.partialUpdate(partialBeer, id));
     }
 
     @DeleteMapping("/{id}")

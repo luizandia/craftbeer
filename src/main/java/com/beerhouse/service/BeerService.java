@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import com.beerhouse.entity.Beer;
+import com.beerhouse.entity.PartialBeer;
 import com.beerhouse.error.EntityAlreadyExist;
 import com.beerhouse.error.EntityNotFound;
 import com.beerhouse.repository.BeerRepository;
@@ -47,14 +48,14 @@ public class BeerService {
         return beerRepository.save(beer);
 	}
 
-    public Beer partialUpdate(Beer beer) {
-        Beer oldBeer = this.getBeer(beer.getId());
+    public Beer partialUpdate(PartialBeer partialBeer, Integer id) {
+        Beer oldBeer = this.getBeer(id);
 
-        if(beer.getName() != null) oldBeer.setName(beer.getName());
-		if(beer.getIngredients() != null) oldBeer.setIngredients(beer.getIngredients());	
-		if(beer.getAlcoholContent() != null) oldBeer.setAlcoholContent(beer.getAlcoholContent());
-		if(beer.getPrice() != null) oldBeer.setPrice(beer.getPrice());
-		if(beer.getCategory() != null) oldBeer.setCategory(beer.getCategory());
+        Optional.ofNullable(partialBeer.getName()).ifPresent(oldBeer::setName);
+        Optional.ofNullable(partialBeer.getPrice()).ifPresent(oldBeer::setPrice);
+        Optional.ofNullable(partialBeer.getAlcoholContent()).ifPresent(oldBeer::setAlcoholContent);
+        Optional.ofNullable(partialBeer.getCategory()).ifPresent(oldBeer::setAlcoholContent);
+        Optional.ofNullable(partialBeer.getIngredients()).ifPresent(oldBeer::setIngredients);
 
         return beerRepository.save(oldBeer);
 	}
